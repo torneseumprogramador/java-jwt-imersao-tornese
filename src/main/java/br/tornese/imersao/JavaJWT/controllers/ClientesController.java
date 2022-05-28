@@ -2,6 +2,7 @@ package br.tornese.imersao.JavaJWT.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +15,9 @@ import br.tornese.imersao.JavaJWT.domain.DTOs.ClienteDTO;
 import br.tornese.imersao.JavaJWT.domain.servicos.ClienteServico;
 import br.tornese.imersao.JavaJWT.infraestrutura.entidades.Cliente;
 import br.tornese.imersao.JavaJWT.infraestrutura.repositorios.ClienteRepo;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 
 
 @RestController
@@ -22,6 +26,13 @@ public class ClientesController {
     @Autowired
     private ClienteRepo repo;
 
+    @ApiOperation(value = "Cadastra um Cliente")
+	@ApiResponses( value = {
+			@ApiResponse(code = 201, message = "Cliente cadastrado com sucesso"),
+			@ApiResponse(code = 401, message = "Não tem autorização para acessar"),
+			@ApiResponse(code = 403, message = "Não tem permissão para acessar"),
+	})
+    @CrossOrigin("*")
     @GetMapping("/clientes")
     public ResponseEntity<Iterable<Cliente>> index(){
         Iterable<Cliente> clientes = repo.findAll();

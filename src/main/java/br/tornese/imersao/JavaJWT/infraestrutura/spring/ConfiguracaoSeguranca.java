@@ -26,6 +26,9 @@ public class ConfiguracaoSeguranca  extends WebSecurityConfigurerAdapter {
 					  .antMatchers(HttpMethod.GET, "/gerar-adm").permitAll()
 					  .antMatchers("/clientes/**").hasAnyAuthority("ADM", "EDITOR") // autorização
 					  .antMatchers("/administradores/**").hasAnyAuthority("ADM") // autorização
+					  .antMatchers(HttpMethod.GET, "/v2/api-docs", "/configuration/ui", 
+										"/swagger-resources/**",  "/configuration/security",
+											"/swagger-ui.html", "/webjars/**").permitAll()
 					  .anyRequest().authenticated().and().cors();
 		
 		httpSec.addFilterBefore(new ApiFilter(), UsernamePasswordAuthenticationFilter.class);
