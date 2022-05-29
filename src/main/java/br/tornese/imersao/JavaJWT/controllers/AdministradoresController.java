@@ -2,6 +2,7 @@ package br.tornese.imersao.JavaJWT.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,6 +12,7 @@ import br.tornese.imersao.JavaJWT.infraestrutura.entidades.Administrador;
 import br.tornese.imersao.JavaJWT.infraestrutura.repositorios.AdministradorRepo;
 import br.tornese.imersao.JavaJWT.infraestrutura.seguranca.Cripto;
 
+@CrossOrigin("*")
 @RestController
 public class AdministradoresController {
 

@@ -20,25 +20,27 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
 
+@CrossOrigin("*")
 @RestController
 public class ClientesController {
 
     @Autowired
     private ClienteRepo repo;
 
-    @ApiOperation(value = "Cadastra um Cliente")
+    @ApiOperation(value = "Lista clientes")
 	@ApiResponses( value = {
 			@ApiResponse(code = 201, message = "Cliente cadastrado com sucesso"),
 			@ApiResponse(code = 401, message = "Não tem autorização para acessar"),
 			@ApiResponse(code = 403, message = "Não tem permissão para acessar"),
 	})
-    @CrossOrigin("*")
+    
     @GetMapping("/clientes")
     public ResponseEntity<Iterable<Cliente>> index(){
         Iterable<Cliente> clientes = repo.findAll();
         return ResponseEntity.status(200).body(clientes);
     }
 
+    @ApiOperation(value = "Cadastra um Cliente")
     @PostMapping("/clientes")
     public ResponseEntity<ClienteDTO> create(@RequestBody ClienteDTO cliente){
         var clienteInfra = (Cliente)ClienteServico.buildCliente(cliente, new Cliente());
