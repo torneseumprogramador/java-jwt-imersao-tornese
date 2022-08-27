@@ -1,0 +1,1 @@
+java -jar target/JavaJWT-0.0.1.jar

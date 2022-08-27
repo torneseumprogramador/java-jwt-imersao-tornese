@@ -1,0 +1,1 @@
+curl -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkYW5pbG9AdG9ybmVzZXVtcHJvZ3JhbWFkb3IuY29tLmJyIiwiaXNzIjoiQURNIiwiQURNIjoiQURNIiwiZXhwIjoxNjYxNjk4NTUxfQ.jj3c8uSL_lkQK7M-66q3QbLVQFQkuLjuk7Tl4UDAVbY" localhost:8080/administradores
